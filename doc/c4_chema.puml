@@ -1,0 +1,42 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+' LAYOUT_WITH_LEGEND()
+
+title Бизнес-процесс передача заявления в ОК(КЭДО)
+
+Person(СпециалистОК, Специалист ОК, "Специалист 1С:ДО")
+Person(Руковоство, Руковоство, "Руководитель компании")
+Person(СотрудникКомпании, Сотрудник, "Сотрудник компании")
+Person(СотрудникКомпанииНЦ, СотрудникиНЦ, "Сотрудник компании начальник цеха")
+
+' Системы
+
+System_Boundary(ДемоБаза, "1C:ДемоБаза"){
+    Container(Справочник_Сотрудники, "Сотрудники", "")
+    Container_Boundary(Учет_Заявлений, "Учет заявлений", ""){
+    Component(Документ_Заявление, "Документ Заявление",,)
+    }
+}
+
+System_Boundary(ДО, "1C:ДО"){
+    Container_Boundary(Бизнес-процессы, "Задачи согласования", ""){
+    Component(Задача, "Прием завяления",,)
+    }
+}
+
+System_Ext(Kafka, "Брокер сообщений Kafka")
+
+' Связи
+Rel(СпециалистОК, ДО, "Обработка заявления")
+Rel(Руковоство, ДО, "Согласование заявления")
+Rel(СотрудникКомпании, СотрудникКомпанииНЦ, "Подача письменного заявления")
+Rel(СотрудникКомпанииНЦ, ДемоБаза, "Формирование заявления", "Ввод заявления в ДемоБазе")
+Rel(ДемоБаза, Kafka, "Передача данных", "")
+Rel(Kafka, ДО, "Передача данных", "")
+Rel(Kafka, ДемоБаза, "Передача данных", "")
+Rel(ДО, Kafka, "Передача данных", "")
+
+@enduml
