@@ -342,6 +342,7 @@
 			<Subsystem>Продажи</Subsystem>
 			<Subsystem>Финансы</Subsystem>
 			<Subsystem>ТоварныеЗапасы</Subsystem>
+			<Subsystem>Документы</Subsystem>
 			<StyleItem>ЦветТекстаСущественныхИзмененийДанных</StyleItem>
 			<StyleItem>ЦветТекстаНормальногоСостояния</StyleItem>
 			<StyleItem>ЦветТекстаОшибочногоСостояния</StyleItem>
@@ -518,6 +519,7 @@
 			<Document>ПриходТовара</Document>
 			<Document>РасходТовара</Document>
 			<Document>ДокументРезерв</Document>
+			<Document>ДокументЗаявление</Document>
 			<DocumentJournal>ДокументыПродаж</DocumentJournal>
 			<DocumentJournal>ФинансовыеДокументы</DocumentJournal>
 			<Enum>ВидыТоваров</Enum>
@@ -528,6 +530,8 @@
 			<Enum>СостоянияЗаказов</Enum>
 			<Enum>НазначениеХарактеристик</Enum>
 			<Enum>ИспользоватьПровайдерГеопозиционирования</Enum>
+			<Enum>СтатусДокумента</Enum>
+			<Enum>ТипЗаявления</Enum>
 			<Report>ВзаимосвязьПродажТоваров</Report>
 			<Report>ДашбордПродажи</Report>
 			<Report>ДинамикаПродаж</Report>
@@ -551,6 +555,7 @@
 			<DataProcessor>УправлениеПолнотекстовымПоиском</DataProcessor>
 			<DataProcessor>УправлениеСистемойВзаимодействия</DataProcessor>
 			<DataProcessor>ЭлектроннаяПочта</DataProcessor>
+			<DataProcessor>РаботаСKafkaЧерезВК</DataProcessor>
 			<InformationRegister>КурсыВалют</InformationRegister>
 			<InformationRegister>ЦеныТоваров</InformationRegister>
 			<InformationRegister>СостояниеВходящихПисем</InformationRegister>
